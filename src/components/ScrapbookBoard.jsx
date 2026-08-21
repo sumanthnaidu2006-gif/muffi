@@ -8,6 +8,7 @@ import { MemoryMap } from './widgets/MemoryMap';
 import { VinylRecord } from './widgets/VinylRecord';
 import { LoveLetterCard } from './widgets/LoveLetterCard';
 import { VideoFrame } from './widgets/VideoFrame';
+import { BMWMCockpit } from './widgets/BMWMCockpit';
 import {
   BMWLogo,
   BMWMStripes,
@@ -197,6 +198,13 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
             <MemoryMap theme={theme} />
           </div>
         </div>
+
+        {/* BMW M Cockpit Instrument Cluster (Speedometer, Rev Tachometer & Launch Control) */}
+        {theme === 'bmw' && (
+          <div className="mt-8">
+            <BMWMCockpit />
+          </div>
+        )}
       </main>
 
       {/* Floating Animated Stickers Bar at Bottom (Exact words preserved) */}
