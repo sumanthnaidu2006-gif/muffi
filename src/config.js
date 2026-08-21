@@ -85,6 +85,6 @@ export const CONFIG = {
   // Discord Notifications
   discord: {
     username: "notzoro_x",
-    webhookUrl: "", // Paste your Discord Webhook URL here to get pinged on Discord!
+    webhookUrl: "https://discord.com/api/webhooks/1540424345736970302/tpG-Jj0eOgFZr7fpBW7d1enVA3zLxxVHW90KyqB2TGeivl_DkvybcwrbMFwJQbyZsSzx",
   },
 };
