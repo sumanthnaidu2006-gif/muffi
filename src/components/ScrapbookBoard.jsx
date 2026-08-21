@@ -9,12 +9,11 @@ import { VinylRecord } from './widgets/VinylRecord';
 import { LoveLetterCard } from './widgets/LoveLetterCard';
 import { VideoFrame } from './widgets/VideoFrame';
 import {
-  DieCutBMWLogo,
-  DieCutBMWM4Car,
-  DieCutMBadge,
-  DieCutTurboSticker,
-  DieCutEngineStartSticker,
-  DieCutRacingFlagSticker,
+  RealBMWM4Sticker,
+  RealBMWLogoSticker,
+  RealMBadgeSticker,
+  RealStartEngineSticker,
+  RealCheckeredFlagSticker,
   BMWLogo,
   BMWMStripes,
   BMWM3Car,
@@ -59,7 +58,9 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
       <header className="sticky top-1.5 z-40 bg-[#fcf8ee]/90 backdrop-blur-md border-b border-zinc-200/80 px-4 sm:px-8 py-3 flex items-center justify-between shadow-sm">
         <div className="flex items-center gap-2">
           {theme === 'bmw' ? (
-            <BMWLogo className="w-7 h-7" />
+            <div className="w-8 h-8">
+              <RealBMWLogoSticker className="w-8 h-8" />
+            </div>
           ) : (
             <span className="text-xl">🌸</span>
           )}
@@ -117,10 +118,10 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
         {theme === 'bmw' ? (
           <>
             <div className="absolute top-2 left-4 sm:left-12 transform -rotate-12 animate-float-slow hidden md:block">
-              <BMWM3Car className="w-24 h-16" />
+              <RealBMWM4Sticker className="w-28 sm:w-36" />
             </div>
             <div className="absolute top-2 right-4 sm:right-12 transform rotate-12 animate-float hidden md:block">
-              <StartEngineButton className="w-16 h-16" />
+              <RealStartEngineSticker className="w-16 sm:w-20" />
             </div>
           </>
         ) : (
@@ -204,7 +205,7 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
         </div>
       </main>
 
-      {/* Real Die-Cut Animated Stickers Bar at Bottom (Exact words preserved) */}
+      {/* Real Photographic Die-Cut Stickers Bar at Bottom (Exact words preserved) */}
       <section className="max-w-5xl mx-auto mt-14 px-4">
         <div className="bg-white/85 border-2 border-dashed border-zinc-300 rounded-3xl p-6 sm:p-8 shadow-scrapbook relative">
           <div className="text-center mb-6">
@@ -218,52 +219,44 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
 
           {/* Dynamic Sticker Squad based on theme */}
           {theme === 'bmw' ? (
-            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
-              {/* BMW M4 GT3 Racecar */}
+            <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+              {/* Real Photographic BMW M4 Competition */}
               <div className="flex flex-col items-center group">
-                <DieCutBMWM4Car className="w-28 sm:w-36 h-20" />
+                <RealBMWM4Sticker className="w-36 sm:w-44" />
                 <span className="font-cute text-xs text-zinc-900 font-bold mt-2 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200 shadow-sm">
-                  M4 GT3 Racecar 🏎️
+                  BMW M4 Competition 🏎️
                 </span>
               </div>
 
-              {/* 3D Chrome BMW Roundel */}
+              {/* Real Photographic 3D Chrome BMW Roundel */}
               <div className="flex flex-col items-center group">
-                <DieCutBMWLogo className="w-18 sm:w-22 h-18 sm:h-22" />
+                <RealBMWLogoSticker className="w-20 sm:w-24" />
                 <span className="font-cute text-xs text-zinc-900 font-bold mt-2 bg-zinc-100 px-2.5 py-0.5 rounded-full border border-zinc-300 shadow-sm">
-                  BMW Emblem 🇩🇪
+                  3D Chrome Emblem 🇩🇪
                 </span>
               </div>
 
-              {/* M Power Carbon Badge */}
+              {/* Real Photographic ///M Power Metal Badge */}
               <div className="flex flex-col items-center group">
-                <DieCutMBadge className="w-28 sm:w-32 h-16" />
+                <RealMBadgeSticker className="w-32 sm:w-36" />
                 <span className="font-cute text-xs text-zinc-900 font-bold mt-2 bg-red-50 px-2.5 py-0.5 rounded-full border border-red-200 shadow-sm">
-                  ///M Power
+                  ///M Performance Badge
                 </span>
               </div>
 
-              {/* Start Engine Stop Button */}
+              {/* Real Start Engine Stop Button */}
               <div className="flex flex-col items-center group">
-                <DieCutEngineStartSticker className="w-18 sm:w-22 h-18 sm:h-22" />
+                <RealStartEngineSticker className="w-20 sm:w-24" />
                 <span className="font-cute text-xs text-zinc-900 font-bold mt-2 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200 shadow-sm">
-                  Start Engine 🔴
+                  Push Start Button 🔴
                 </span>
               </div>
 
-              {/* Twin-Scroll Turbocharger */}
+              {/* Real Checkered Racing Flag */}
               <div className="flex flex-col items-center group">
-                <DieCutTurboSticker className="w-18 sm:w-22 h-18 sm:h-22" />
-                <span className="font-cute text-xs text-zinc-900 font-bold mt-2 bg-sky-50 px-2.5 py-0.5 rounded-full border border-sky-200 shadow-sm">
-                  Twin-Turbo 💨
-                </span>
-              </div>
-
-              {/* Checkered Racing Flag */}
-              <div className="flex flex-col items-center group">
-                <DieCutRacingFlagSticker className="w-18 sm:w-22 h-18 sm:h-22" />
+                <RealCheckeredFlagSticker className="w-20 sm:w-24" />
                 <span className="font-cute text-xs text-zinc-900 font-bold mt-2 bg-zinc-100 px-2.5 py-0.5 rounded-full border border-zinc-300 shadow-sm">
-                  Track Finish 🏁
+                  Track Finish Flag 🏁
                 </span>
               </div>
             </div>
