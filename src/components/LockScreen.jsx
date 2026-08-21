@@ -47,7 +47,7 @@ export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
     <div
       className={`min-h-screen w-full relative overflow-hidden flex flex-col items-center justify-center p-4 select-none transition-colors duration-700 ${
         theme === 'bmw'
-          ? 'bg-gradient-to-b from-[#090c13] via-[#0f1523] to-[#06080d] text-white'
+          ? 'bg-gradient-to-b from-[#06080d] via-[#0b101b] to-[#040609] text-white'
           : 'bg-gradient-to-b from-[#fef3c7] via-[#fff7ed] to-[#fed7aa] text-amber-950'
       }`}
     >
@@ -56,9 +56,9 @@ export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
         <ThemeSwitcher currentTheme={theme} onToggleTheme={onToggleTheme} />
       </div>
 
-      {/* Top Bar Accent */}
+      {/* Top M-Stripe Bar Accent */}
       {theme === 'bmw' ? (
-        <div className="absolute top-0 left-0 right-0 h-2 flex z-20">
+        <div className="absolute top-0 left-0 right-0 h-2 flex z-20 shadow-lg shadow-blue-500/20">
           <div className="flex-1 bg-[#009FE3]" />
           <div className="flex-1 bg-[#0019A8]" />
           <div className="flex-1 bg-[#E2001A]" />
@@ -70,9 +70,9 @@ export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
       {/* Ambient Lighting Glows */}
       {theme === 'bmw' ? (
         <>
-          <div className="absolute top-10 left-10 w-72 h-48 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-16 right-8 w-80 h-48 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-12 left-12 w-80 h-56 bg-sky-500/20 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-16 right-10 w-96 h-56 bg-blue-600/15 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-red-500/10 rounded-full blur-[140px] pointer-events-none" />
         </>
       ) : (
         <>
@@ -86,10 +86,10 @@ export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
       {theme === 'bmw' ? (
         <>
           <div className="absolute -bottom-2 right-4 md:right-24 opacity-95 animate-float hidden sm:block">
-            <RealBMWM4Sticker className="w-36 sm:w-48" />
+            <RealBMWM4Sticker className="w-40 sm:w-52" />
           </div>
           <div className="absolute top-16 right-10 md:right-28 opacity-90 rotate-6 hidden sm:block">
-            <RealStartEngineSticker className="w-16 h-16" />
+            <RealStartEngineSticker className="w-18 h-18" />
           </div>
         </>
       ) : (
@@ -109,9 +109,9 @@ export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
         {/* Center Lock Badge */}
         <div className="relative mb-4 flex items-center justify-center">
           {theme === 'bmw' ? (
-            <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-zinc-900 to-[#121824] flex items-center justify-center shadow-2xl border-2 border-zinc-700">
+            <div className="w-26 h-26 rounded-full bg-gradient-to-tr from-[#0b101b] via-[#121927] to-[#1e293b] p-3 flex items-center justify-center shadow-[0_0_35px_rgba(0,159,227,0.35)] border-2 border-sky-400/40">
               {isSuccess ? (
-                <Unlock className="w-12 h-12 text-blue-400 animate-pulse" />
+                <Unlock className="w-12 h-12 text-sky-400 animate-pulse" />
               ) : (
                 <RealBMWLogoSticker className="w-20 h-20" />
               )}
@@ -123,7 +123,6 @@ export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
               ) : (
                 <Lock className="w-12 h-12 text-amber-900" />
               )}
-              {/* Chibi Naruto on top */}
               <div className="absolute -top-10 -right-6 animate-wiggle">
                 <ChibiNaruto className="w-16 h-16" expression="wink" />
               </div>
@@ -133,12 +132,12 @@ export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
 
         {/* Header Titles (Exact text preserved) */}
         <div className="text-center mb-6">
-          <div className={`flex items-center justify-center gap-2 font-handwriting text-2xl md:text-3xl font-bold tracking-wide ${theme === 'bmw' ? 'text-white' : 'text-amber-950'}`}>
+          <div className={`flex items-center justify-center gap-2 font-handwriting text-2xl md:text-3xl font-bold tracking-wide ${theme === 'bmw' ? 'text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]' : 'text-amber-950'}`}>
             <span>From: {CONFIG.senderName}</span>
             <span className={theme === 'bmw' ? 'text-sky-400' : 'text-orange-500'}>•</span>
             <span>For: {CONFIG.recipientName}</span>
           </div>
-          <p className={`font-cute text-lg mt-0.5 flex items-center justify-center gap-1.5 ${theme === 'bmw' ? 'text-zinc-300' : 'text-amber-800'}`}>
+          <p className={`font-cute text-lg mt-0.5 flex items-center justify-center gap-1.5 ${theme === 'bmw' ? 'text-sky-200/90' : 'text-amber-800'}`}>
             <Sparkles className={`w-4 h-4 ${theme === 'bmw' ? 'text-sky-400' : 'text-amber-600'}`} />
             {CONFIG.subtitle}
           </p>
@@ -158,15 +157,15 @@ export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
                 key={idx}
                 className={`w-4 h-4 rounded-full transition-all duration-300 border-2 ${
                   isSuccess
-                    ? 'bg-emerald-500 border-emerald-400 scale-125'
+                    ? 'bg-emerald-400 border-emerald-300 scale-125 shadow-lg shadow-emerald-400/50'
                     : isError
-                    ? 'bg-rose-500 border-rose-400 scale-110'
+                    ? 'bg-rose-500 border-rose-400 scale-110 shadow-lg shadow-rose-500/50'
                     : isFilled
                     ? theme === 'bmw'
-                      ? 'bg-sky-500 border-sky-300 scale-110 shadow-md shadow-sky-500/50'
+                      ? 'bg-sky-400 border-sky-200 scale-110 shadow-lg shadow-sky-400/60'
                       : 'bg-orange-500 border-orange-600 scale-110 shadow-sm'
                     : theme === 'bmw'
-                    ? 'bg-zinc-800/80 border-zinc-600'
+                    ? 'bg-zinc-900/90 border-zinc-700'
                     : 'bg-white/90 border-amber-300'
                 }`}
               />
@@ -174,11 +173,11 @@ export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
           })}
         </div>
 
-        {/* Numeric Keypad */}
+        {/* High-Tech Glassmorphism Keypad */}
         <div
-          className={`grid grid-cols-3 gap-3 w-full max-w-[280px] p-4 rounded-3xl backdrop-blur-md shadow-2xl transition-colors ${
+          className={`grid grid-cols-3 gap-3 w-full max-w-[280px] p-4 rounded-3xl backdrop-blur-xl shadow-2xl transition-all ${
             theme === 'bmw'
-              ? 'bg-[#111722]/90 border border-zinc-700/80 shadow-black/60'
+              ? 'bg-[#0f1523]/80 border border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.7)]'
               : 'bg-white/80 border-2 border-amber-200/90 shadow-amber-900/10'
           }`}
         >
@@ -188,7 +187,7 @@ export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
               onClick={() => handleNumberClick(num.toString())}
               className={`h-14 rounded-2xl text-2xl font-cute font-bold shadow-sm transition-all duration-150 flex items-center justify-center active:scale-95 ${
                 theme === 'bmw'
-                  ? 'bg-zinc-800/90 hover:bg-zinc-700 text-white border border-zinc-700 hover:border-sky-400 hover:shadow-md'
+                  ? 'bg-gradient-to-b from-[#182130] to-[#101724] hover:from-[#232f44] hover:to-[#172133] text-white border border-white/10 hover:border-sky-400/80 hover:shadow-[0_0_15px_rgba(56,189,248,0.4)]'
                   : 'bg-white/95 hover:bg-amber-100 text-amber-950 border border-amber-200 hover:border-amber-400'
               }`}
             >
@@ -206,7 +205,7 @@ export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
             onClick={() => handleNumberClick('0')}
             className={`h-14 rounded-2xl text-2xl font-cute font-bold shadow-sm transition-all duration-150 flex items-center justify-center active:scale-95 ${
               theme === 'bmw'
-                ? 'bg-zinc-800/90 hover:bg-zinc-700 text-white border border-zinc-700 hover:border-sky-400 hover:shadow-md'
+                ? 'bg-gradient-to-b from-[#182130] to-[#101724] hover:from-[#232f44] hover:to-[#172133] text-white border border-white/10 hover:border-sky-400/80 hover:shadow-[0_0_15px_rgba(56,189,248,0.4)]'
                 : 'bg-white/95 hover:bg-amber-100 text-amber-950 border border-amber-200 hover:border-amber-400'
             }`}
           >
@@ -218,7 +217,7 @@ export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
             onClick={handleDelete}
             className={`h-14 rounded-2xl text-xl font-bold shadow-sm transition-all duration-150 flex items-center justify-center active:scale-95 ${
               theme === 'bmw'
-                ? 'bg-red-950/60 hover:bg-red-900/80 text-red-300 border border-red-800/80'
+                ? 'bg-red-950/70 hover:bg-red-900 text-red-300 border border-red-800/80 hover:shadow-[0_0_15px_rgba(239,68,68,0.4)]'
                 : 'bg-rose-100 hover:bg-rose-200 text-rose-800 border border-rose-200'
             }`}
             title="Delete"
@@ -228,12 +227,12 @@ export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
         </div>
 
         {/* Hint text (Exact text preserved) */}
-        <p className={`font-cute text-sm mt-6 text-center ${theme === 'bmw' ? 'text-zinc-400' : 'text-amber-900/70'}`}>
+        <p className={`font-cute text-sm mt-6 text-center ${theme === 'bmw' ? 'text-sky-200/60' : 'text-amber-900/70'}`}>
           💡 Uk the password very well
         </p>
 
         {/* Watermark */}
-        <div className={`mt-8 text-xs font-cute tracking-widest uppercase ${theme === 'bmw' ? 'text-zinc-500' : 'text-amber-800/40'}`}>
+        <div className={`mt-8 text-xs font-cute tracking-widest uppercase ${theme === 'bmw' ? 'text-zinc-600' : 'text-amber-800/40'}`}>
           {CONFIG.instagramTag}
         </div>
       </div>

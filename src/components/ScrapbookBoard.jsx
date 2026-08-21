@@ -34,17 +34,28 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
     setIsPlayingMusic(!isPlayingMusic);
   };
 
+  const isBMW = theme === 'bmw';
+
   return (
     <div
       className={`min-h-screen w-full relative pb-24 overflow-x-hidden transition-colors duration-700 ${
-        theme === 'bmw'
-          ? 'bg-gradient-to-b from-[#080b11] via-[#0e1420] to-[#06080c] text-zinc-100 selection:bg-sky-500/30'
+        isBMW
+          ? 'bg-gradient-to-b from-[#05070c] via-[#090e18] to-[#040609] text-zinc-100 selection:bg-sky-500/30'
           : 'bg-gradient-to-b from-[#fef3c7] via-[#fff7ed] to-[#fed7aa] text-[#451a03] selection:bg-amber-300'
       }`}
     >
+      {/* BMW Ambient Glow Lighting Background */}
+      {isBMW && (
+        <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+          <div className="absolute -top-20 -left-20 w-[550px] h-[550px] bg-sky-500/10 rounded-full blur-[140px]" />
+          <div className="absolute top-1/3 -right-20 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px]" />
+          <div className="absolute -bottom-20 left-1/3 w-[650px] h-[650px] bg-red-600/5 rounded-full blur-[160px]" />
+        </div>
+      )}
+
       {/* Top Header Bar Accent */}
-      {theme === 'bmw' ? (
-        <div className="h-1.5 w-full flex sticky top-0 z-50">
+      {isBMW ? (
+        <div className="h-1.5 w-full flex sticky top-0 z-50 shadow-lg shadow-blue-500/30">
           <div className="flex-1 bg-[#009FE3]" />
           <div className="flex-1 bg-[#0019A8]" />
           <div className="flex-1 bg-[#E2001A]" />
@@ -58,24 +69,24 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
 
       {/* Top Floating Navbar / Header */}
       <header
-        className={`sticky top-1.5 z-40 backdrop-blur-md px-4 sm:px-8 py-3 flex items-center justify-between shadow-md transition-colors ${
-          theme === 'bmw'
-            ? 'bg-[#0b1019]/90 border-b border-zinc-800 text-white shadow-black/40'
+        className={`sticky top-1.5 z-40 backdrop-blur-xl px-4 sm:px-8 py-3 flex items-center justify-between shadow-lg transition-all ${
+          isBMW
+            ? 'bg-[#080d16]/85 border-b border-white/10 text-white shadow-black/60'
             : 'bg-[#fff8eb]/90 border-b border-amber-200/90 text-amber-950 shadow-amber-900/5'
         }`}
       >
         <div className="flex items-center gap-2">
-          {theme === 'bmw' ? (
+          {isBMW ? (
             <div className="w-8 h-8">
               <RealBMWLogoSticker className="w-8 h-8" />
             </div>
           ) : (
             <span className="text-xl">🌸</span>
           )}
-          <h1 className="font-handwriting text-2xl sm:text-3xl font-bold">
+          <h1 className="font-handwriting text-2xl sm:text-3xl font-bold tracking-wide">
             For {CONFIG.recipientName} ✨
           </h1>
-          {theme === 'bmw' && <BMWMStripes className="h-2 w-10 hidden sm:inline-flex" />}
+          {isBMW && <BMWMStripes className="h-2 w-10 hidden sm:inline-flex" />}
         </div>
 
         {/* Action Controls */}
@@ -86,13 +97,13 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
           {/* Music Toggle */}
           <button
             onClick={toggleMusic}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-cute font-bold transition-all shadow-sm ${
+            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-cute font-bold transition-all shadow-sm active:scale-95 ${
               isPlayingMusic
-                ? theme === 'bmw'
-                  ? 'bg-blue-600 text-white shadow-blue-500/50'
+                ? isBMW
+                  ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-sky-500/40'
                   : 'bg-orange-600 text-white shadow-orange-500/40'
-                : theme === 'bmw'
-                ? 'bg-zinc-800 text-zinc-200 hover:bg-zinc-700 border border-zinc-700'
+                : isBMW
+                ? 'bg-zinc-800/80 text-zinc-200 hover:bg-zinc-700 border border-white/10'
                 : 'bg-white text-amber-950 hover:bg-amber-100 border border-amber-200'
             }`}
             title="Toggle background music"
@@ -114,8 +125,8 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
           <button
             onClick={onRelock}
             className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-cute transition-colors ${
-              theme === 'bmw'
-                ? 'bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700'
+              isBMW
+                ? 'bg-zinc-800/80 hover:bg-zinc-700 text-zinc-200 border border-white/10'
                 : 'bg-white hover:bg-amber-100 text-amber-950 border border-amber-200'
             }`}
             title="Lock scrapbook"
@@ -127,12 +138,12 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
       </header>
 
       {/* Hero Dedication Section (Exact words preserved) */}
-      <section className="max-w-5xl mx-auto px-4 pt-8 pb-4 text-center relative">
+      <section className="max-w-5xl mx-auto px-4 pt-8 pb-4 text-center relative z-10">
         {/* Floating Theme Stickers on top */}
-        {theme === 'bmw' ? (
+        {isBMW ? (
           <>
             <div className="absolute top-2 left-4 sm:left-12 transform -rotate-12 animate-float-slow hidden md:block">
-              <RealBMWM4Sticker className="w-32 sm:w-40" />
+              <RealBMWM4Sticker className="w-36 sm:w-44" />
             </div>
             <div className="absolute top-2 right-4 sm:right-12 transform rotate-12 animate-float hidden md:block">
               <RealStartEngineSticker className="w-18 sm:w-22" />
@@ -153,30 +164,30 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
           {/* Washi tape over title */}
           <div
             className={`absolute -top-3 left-1/2 -translate-x-1/2 w-48 h-6 -rotate-1 opacity-90 rounded-sm ${
-              theme === 'bmw' ? 'bg-gradient-to-r from-[#009FE3] via-[#0019A8] to-[#E2001A]' : 'washi-tape-yellow'
+              isBMW ? 'bg-gradient-to-r from-[#009FE3] via-[#0019A8] to-[#E2001A]' : 'washi-tape-yellow'
             }`}
           />
 
           <div
-            className={`rounded-3xl px-8 py-5 shadow-2xl transition-colors border-2 ${
-              theme === 'bmw'
-                ? 'bg-[#121824]/90 border-zinc-700/80 text-white shadow-black/50'
+            className={`rounded-3xl px-8 py-5 shadow-2xl transition-all border-2 ${
+              isBMW
+                ? 'bg-[#0d1422]/90 backdrop-blur-xl border-sky-500/20 text-white shadow-[0_12px_45px_rgba(0,102,177,0.25)]'
                 : 'bg-white/90 border-amber-200/90 text-amber-950 shadow-amber-900/10'
             }`}
           >
             <span
               className={`font-cute text-sm uppercase tracking-widest font-bold block mb-1 ${
-                theme === 'bmw' ? 'text-sky-400' : 'text-orange-600'
+                isBMW ? 'text-sky-400' : 'text-orange-600'
               }`}
             >
               ✨ Next time manam photos digaka evi marchali ee 😭😭 ✨
             </span>
-            <h2 className="font-handwriting text-4xl sm:text-6xl font-bold">
+            <h2 className="font-handwriting text-4xl sm:text-6xl font-bold tracking-wide">
               For {CONFIG.recipientName}, with Love
             </h2>
             <p
               className={`font-cute text-base sm:text-xl mt-1 ${
-                theme === 'bmw' ? 'text-zinc-300' : 'text-amber-800'
+                isBMW ? 'text-sky-200/90' : 'text-amber-800'
               }`}
             >
               From: {CONFIG.senderName} • "telusa naku unna rogalu anni poyay ee ante hope so 🥲"
@@ -186,7 +197,7 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
       </section>
 
       {/* Main Scrapbook Collage Board */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 pt-6">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Column (5 cols on lg screens) */}
@@ -203,14 +214,14 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
 
             {/* Mystery Track */}
             <div
-              className={`border-2 rounded-3xl p-6 shadow-2xl flex flex-col items-center justify-center relative transition-colors ${
-                theme === 'bmw'
-                  ? 'bg-[#121824]/90 border-zinc-700/80 text-white shadow-black/40'
+              className={`border-2 rounded-3xl p-6 shadow-2xl flex flex-col items-center justify-center relative transition-all ${
+                isBMW
+                  ? 'bg-[#0d1422]/90 backdrop-blur-xl border-sky-500/20 text-white shadow-[0_8px_32px_rgba(0,102,177,0.2)]'
                   : 'bg-[#fffdf8] border-[#e6d8ba] text-zinc-900 shadow-scrapbook'
               }`}
             >
               <div className="absolute top-3 left-4">
-                <span className={`font-handwriting text-2xl font-bold ${theme === 'bmw' ? 'text-white' : 'text-zinc-900'}`}>
+                <span className={`font-handwriting text-2xl font-bold ${isBMW ? 'text-white' : 'text-zinc-900'}`}>
                   Mystery Track 🕵️‍♂️🎶
                 </span>
               </div>
@@ -234,9 +245,9 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
 
             {/* Polaroid Photo Booth Gallery (my fav 📷) */}
             <div
-              className={`border-2 rounded-3xl p-6 shadow-2xl transition-colors ${
-                theme === 'bmw'
-                  ? 'bg-[#121824]/90 border-zinc-700/80 text-white shadow-black/40'
+              className={`border-2 rounded-3xl p-6 shadow-2xl transition-all ${
+                isBMW
+                  ? 'bg-[#0d1422]/90 backdrop-blur-xl border-sky-500/20 text-white shadow-[0_8px_32px_rgba(0,102,177,0.2)]'
                   : 'bg-[#fffdf8] border-[#e6d8ba] text-zinc-900 shadow-scrapbook'
               }`}
             >
@@ -250,30 +261,30 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
       </main>
 
       {/* Real Photographic Die-Cut Stickers Bar at Bottom (Exact words preserved) */}
-      <section className="max-w-5xl mx-auto mt-14 px-4">
+      <section className="max-w-5xl mx-auto mt-14 px-4 relative z-10">
         <div
-          className={`border-2 border-dashed rounded-3xl p-6 sm:p-8 shadow-2xl relative transition-colors ${
-            theme === 'bmw'
-              ? 'bg-[#121824]/90 border-zinc-700/80 text-white shadow-black/50'
+          className={`border-2 border-dashed rounded-3xl p-6 sm:p-8 shadow-2xl relative transition-all ${
+            isBMW
+              ? 'bg-[#0d1422]/90 backdrop-blur-xl border-sky-500/30 text-white shadow-[0_12px_45px_rgba(0,102,177,0.25)]'
               : 'bg-white/90 border-amber-300/90 text-amber-950 shadow-amber-900/10'
           }`}
         >
           <div className="text-center mb-6">
-            <span className={`font-handwriting text-3xl sm:text-4xl font-bold ${theme === 'bmw' ? 'text-white' : 'text-amber-950'}`}>
+            <span className={`font-handwriting text-3xl sm:text-4xl font-bold ${isBMW ? 'text-white' : 'text-amber-950'}`}>
               stickers anni animate chesa neee 💃🕺
             </span>
-            <p className={`font-cute text-sm sm:text-base font-bold mt-1 ${theme === 'bmw' ? 'text-sky-400' : 'text-orange-600'}`}>
+            <p className={`font-cute text-sm sm:text-base font-bold mt-1 ${isBMW ? 'text-sky-400' : 'text-orange-600'}`}>
               They move 🍃 • Hover or tap the stickers to feel the sporty physics!
             </p>
           </div>
 
           {/* Dynamic Sticker Squad based on theme */}
-          {theme === 'bmw' ? (
+          {isBMW ? (
             <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
               {/* Real Photographic BMW M4 Competition */}
               <div className="flex flex-col items-center group">
                 <RealBMWM4Sticker className="w-36 sm:w-44" />
-                <span className="font-cute text-xs text-zinc-200 font-bold mt-2 bg-blue-950/80 px-2.5 py-0.5 rounded-full border border-blue-600/60 shadow-sm">
+                <span className="font-cute text-xs text-zinc-200 font-bold mt-2 bg-blue-950/80 px-2.5 py-0.5 rounded-full border border-sky-400/40 shadow-sm">
                   BMW M4 Competition 🏎️
                 </span>
               </div>
@@ -289,7 +300,7 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
               {/* Real Photographic ///M Power Metal Badge */}
               <div className="flex flex-col items-center group">
                 <RealMBadgeSticker className="w-32 sm:w-36" />
-                <span className="font-cute text-xs text-zinc-200 font-bold mt-2 bg-red-950/80 px-2.5 py-0.5 rounded-full border border-red-600/60 shadow-sm">
+                <span className="font-cute text-xs text-zinc-200 font-bold mt-2 bg-red-950/80 px-2.5 py-0.5 rounded-full border border-red-500/50 shadow-sm">
                   ///M Performance Badge
                 </span>
               </div>
@@ -343,8 +354,8 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
 
       {/* Footer (Exact words preserved) */}
       <footer
-        className={`mt-16 text-center text-xs font-cute flex flex-col items-center gap-1.5 ${
-          theme === 'bmw' ? 'text-zinc-400' : 'text-amber-900/70'
+        className={`mt-16 text-center text-xs font-cute flex flex-col items-center gap-1.5 relative z-10 ${
+          isBMW ? 'text-zinc-400' : 'text-amber-900/70'
         }`}
       >
         <div className="flex items-center gap-1.5">
