@@ -4,6 +4,7 @@ import { CONFIG } from '../config';
 import { RealBMWLogoSticker, BMWMStripes, RealBMWM4Sticker, RealStartEngineSticker } from './BMWComponents';
 import { ChibiNaruto, ChibiKurama, KonohaStamp } from './NarutoCharacters';
 import { ThemeSwitcher } from './ThemeSwitcher';
+import { VisitorCounter } from './VisitorCounter';
 
 export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
   const [pin, setPin] = useState('');
@@ -231,10 +232,11 @@ export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
           💡 Uk the password very well
         </p>
 
-        {/* Watermark */}
-        <div className={`mt-8 text-xs font-cute tracking-widest uppercase ${theme === 'bmw' ? 'text-zinc-600' : 'text-amber-800/40'}`}>
+        {/* Watermark & Visitor Counter */}
+        <div className={`mt-6 text-xs font-cute tracking-widest uppercase ${theme === 'bmw' ? 'text-zinc-600' : 'text-amber-800/40'}`}>
           {CONFIG.instagramTag}
         </div>
+        <VisitorCounter theme={theme} />
       </div>
     </div>
   );

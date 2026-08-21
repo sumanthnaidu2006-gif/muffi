@@ -27,6 +27,7 @@ import {
 } from './NarutoCharacters';
 import { AudioController } from './AudioController';
 import { ThemeSwitcher } from './ThemeSwitcher';
+import { VisitorCounter } from './VisitorCounter';
 
 export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
@@ -367,6 +368,7 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
         <div className="font-mono text-[10px] tracking-widest uppercase opacity-70">
           {CONFIG.instagramTag}
         </div>
+        <VisitorCounter theme={theme} />
       </footer>
     </div>
   );
