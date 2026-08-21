@@ -1,132 +1,264 @@
 import React from 'react';
 
-// Official BMW Roundel Emblem (Vector SVG)
-export const BMWLogo = ({ className = "w-16 h-16" }) => (
-  <svg viewBox="0 0 160 160" className={`select-none filter drop-shadow-md ${className}`} xmlns="http://www.w3.org/2000/svg">
-    <circle cx="80" cy="80" r="76" fill="#18181B" stroke="#A1A1AA" strokeWidth="4" />
-    <circle cx="80" cy="80" r="70" fill="#000000" />
-    
-    {/* Silver Ring */}
-    <circle cx="80" cy="80" r="48" fill="none" stroke="#E4E4E7" strokeWidth="3" />
-    
-    {/* Inner Bavarian Quadrants (Top-Left & Bottom-Right: White, Top-Right & Bottom-Left: Bavarian Blue) */}
-    <g transform="translate(80, 80)">
-      {/* Top Left - White */}
-      <path d="M 0 0 L -46 0 A 46 46 0 0 1 0 -46 Z" fill="#FFFFFF" />
-      {/* Top Right - Blue */}
-      <path d="M 0 0 L 0 -46 A 46 46 0 0 1 46 0 Z" fill="#0066B1" />
-      {/* Bottom Right - White */}
-      <path d="M 0 0 L 46 0 A 46 46 0 0 1 0 46 Z" fill="#FFFFFF" />
-      {/* Bottom Left - Blue */}
-      <path d="M 0 0 L 0 46 A 46 46 0 0 1 -46 0 Z" fill="#0066B1" />
-      {/* Center Dividing Lines */}
-      <line x1="-46" y1="0" x2="46" y2="0" stroke="#71717A" strokeWidth="1.5" />
-      <line x1="0" y1="-46" x2="0" y2="46" stroke="#71717A" strokeWidth="1.5" />
-    </g>
+// 1. Ultra-Realistic 3D Die-Cut BMW Roundel Emblem Sticker
+export const DieCutBMWLogo = ({ className = "w-20 h-20" }) => (
+  <div className={`relative group inline-block cursor-pointer select-none transition-transform duration-300 hover:scale-115 hover:-rotate-3 hover:-translate-y-1 active:scale-95 ${className}`}>
+    <svg viewBox="0 0 160 160" className="w-full h-full filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]" xmlns="http://www.w3.org/2000/svg">
+      {/* Thick White Die-Cut Vinyl Sticker Border */}
+      <circle cx="80" cy="80" r="76" fill="#FFFFFF" />
+      <circle cx="80" cy="80" r="72" fill="#09090B" stroke="#D4D4D8" strokeWidth="2" />
+      
+      {/* Outer Chrome Bezel */}
+      <circle cx="80" cy="80" r="67" fill="#18181B" stroke="#71717A" strokeWidth="3" />
+      <circle cx="80" cy="80" r="48" fill="none" stroke="#E4E4E7" strokeWidth="3.5" />
+      
+      {/* Bavarian Quadrants */}
+      <g transform="translate(80, 80)">
+        <path d="M 0 0 L -46 0 A 46 46 0 0 1 0 -46 Z" fill="#FFFFFF" />
+        <path d="M 0 0 L 0 -46 A 46 46 0 0 1 46 0 Z" fill="#0066B1" />
+        <path d="M 0 0 L 46 0 A 46 46 0 0 1 0 46 Z" fill="#FFFFFF" />
+        <path d="M 0 0 L 0 46 A 46 46 0 0 1 -46 0 Z" fill="#0066B1" />
+        <line x1="-46" y1="0" x2="46" y2="0" stroke="#71717A" strokeWidth="2" />
+        <line x1="0" y1="-46" x2="0" y2="46" stroke="#71717A" strokeWidth="2" />
+      </g>
 
-    {/* BMW Letters in Curved Ring */}
-    <text x="50" y="32" fill="#FFFFFF" fontFamily="sans-serif" fontWeight="900" fontSize="16" letterSpacing="0.5">B</text>
-    <text x="73" y="24" fill="#FFFFFF" fontFamily="sans-serif" fontWeight="900" fontSize="16" letterSpacing="0.5">M</text>
-    <text x="100" y="32" fill="#FFFFFF" fontFamily="sans-serif" fontWeight="900" fontSize="16" letterSpacing="0.5">W</text>
-  </svg>
+      {/* 3D Glass Light Gloss Glare */}
+      <path d="M 38 42 Q 80 18 122 42 Q 80 62 38 42 Z" fill="#FFFFFF" opacity="0.35" />
+
+      {/* Bold BMW Letters */}
+      <text x="50" y="32" fill="#FFFFFF" fontFamily="sans-serif" fontWeight="900" fontSize="16" letterSpacing="1">B</text>
+      <text x="73" y="24" fill="#FFFFFF" fontFamily="sans-serif" fontWeight="900" fontSize="16" letterSpacing="1">M</text>
+      <text x="99" y="32" fill="#FFFFFF" fontFamily="sans-serif" fontWeight="900" fontSize="16" letterSpacing="1">W</text>
+    </svg>
+  </div>
 );
 
-// BMW M Power Tri-Color Stripe (Cyan, Velvet Blue, Red)
+// 2. Realistic Die-Cut BMW M4 GT3 Racecar Sticker
+export const DieCutBMWM4Car = ({ className = "w-32 h-20" }) => (
+  <div className={`relative group inline-block cursor-pointer select-none transition-transform duration-300 hover:scale-115 hover:rotate-3 hover:-translate-y-1 active:scale-95 ${className}`}>
+    <svg viewBox="0 0 240 140" className="w-full h-full filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)]" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="m4Paint" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#38BDF8" />
+          <stop offset="50%" stopColor="#0284C7" />
+          <stop offset="100%" stopColor="#0369A1" />
+        </linearGradient>
+      </defs>
+
+      {/* Thick White Vinyl Die-Cut Backing Contour */}
+      <path
+        d="M 22 88 Q 18 60 52 50 L 72 26 Q 100 16 160 16 Q 192 16 208 48 L 226 68 Q 235 90 220 110 L 32 110 Q 18 105 22 88 Z"
+        fill="#FFFFFF"
+        stroke="#E4E4E7"
+        strokeWidth="6"
+        strokeLinejoin="round"
+      />
+
+      {/* Aerodynamic GT Carbon Wing Spoiler */}
+      <path d="M 24 40 L 48 38 L 46 48 L 22 48 Z" fill="#0F172A" />
+      <line x1="32" y1="48" x2="36" y2="60" stroke="#0F172A" strokeWidth="3" />
+      <line x1="42" y1="48" x2="44" y2="60" stroke="#0F172A" strokeWidth="3" />
+
+      {/* Cabin & Windshield */}
+      <path d="M 76 56 Q 100 28 150 28 Q 185 28 198 56 Z" fill="#09090B" stroke="#1E293B" strokeWidth="2.5" />
+      <path d="M 88 52 Q 108 34 150 34 Q 178 34 190 52 Z" fill="#BAE6FD" opacity="0.85" />
+
+      {/* Main Aggressive Chassis */}
+      <path d="M 26 84 Q 30 58 64 58 L 198 58 Q 224 64 226 88 Q 226 102 210 104 L 40 104 Q 22 104 26 84 Z" fill="url(#m4Paint)" stroke="#0284C7" strokeWidth="2" />
+
+      {/* Carbon Splitter & Side Skirts */}
+      <rect x="24" y="98" width="198" height="6" rx="2" fill="#09090B" />
+
+      {/* Aggressive Angel Eyes Headlights (Laserlight Blue) */}
+      <ellipse cx="212" cy="74" rx="8" ry="5.5" fill="#F0F9FF" stroke="#38BDF8" strokeWidth="2" />
+      <path d="M 206 74 Q 212 68 218 74" stroke="#0284C7" strokeWidth="3" fill="none" />
+
+      {/* Iconic M Kidney Grille */}
+      <rect x="195" y="66" width="6" height="24" rx="2" fill="#09090B" stroke="#38BDF8" strokeWidth="1" />
+      <rect x="186" y="66" width="6" height="24" rx="2" fill="#09090B" stroke="#38BDF8" strokeWidth="1" />
+
+      {/* M Motorsport Tri-Color Livery Stripe */}
+      <g transform="translate(100, 68) skewX(-20)">
+        <rect x="0" y="0" width="8" height="26" fill="#009FE3" />
+        <rect x="9" y="0" width="8" height="26" fill="#0019A8" />
+        <rect x="18" y="0" width="8" height="26" fill="#E2001A" />
+      </g>
+
+      {/* BBS Forged Alloy Wheels */}
+      <g transform="translate(62, 102)">
+        <circle cx="0" cy="0" r="20" fill="#09090B" stroke="#3F3F46" strokeWidth="3" />
+        <circle cx="0" cy="0" r="13" fill="#52525B" stroke="#E4E4E7" strokeWidth="2" />
+        <circle cx="0" cy="0" r="4.5" fill="#0066B1" />
+      </g>
+
+      <g transform="translate(182, 102)">
+        <circle cx="0" cy="0" r="20" fill="#09090B" stroke="#3F3F46" strokeWidth="3" />
+        <circle cx="0" cy="0" r="13" fill="#52525B" stroke="#E4E4E7" strokeWidth="2" />
+        <circle cx="0" cy="0" r="4.5" fill="#0066B1" />
+      </g>
+    </svg>
+  </div>
+);
+
+// 3. Realistic Die-Cut M Power Motorsport Badge Sticker
+export const DieCutMBadge = ({ className = "w-28 h-14" }) => (
+  <div className={`relative group inline-block cursor-pointer select-none transition-transform duration-300 hover:scale-115 hover:-rotate-4 hover:-translate-y-1 active:scale-95 ${className}`}>
+    <svg viewBox="0 0 180 80" className="w-full h-full filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]" xmlns="http://www.w3.org/2000/svg">
+      {/* Die-Cut White Border Outline */}
+      <rect x="6" y="6" width="168" height="68" rx="16" fill="#FFFFFF" stroke="#E4E4E7" strokeWidth="4" />
+      
+      {/* Carbon Fiber Background Plate */}
+      <rect x="10" y="10" width="160" height="60" rx="12" fill="#18181B" stroke="#3F3F46" strokeWidth="1.5" />
+
+      {/* M Motorsport Stripes */}
+      <g transform="translate(24, 18) skewX(-16)">
+        <rect x="0" y="0" width="14" height="44" rx="2" fill="#009FE3" />
+        <rect x="16" y="0" width="14" height="44" rx="2" fill="#0019A8" />
+        <rect x="32" y="0" width="14" height="44" rx="2" fill="#E2001A" />
+        
+        {/* Metallic Chrome M Letter */}
+        <text x="52" y="40" fill="#FFFFFF" fontFamily="sans-serif" fontWeight="900" fontSize="46" letterSpacing="-2">
+          M
+        </text>
+      </g>
+
+      {/* Gloss Light Reflection */}
+      <path d="M 12 12 L 168 12 L 130 35 L 12 35 Z" fill="#FFFFFF" opacity="0.12" />
+    </svg>
+  </div>
+);
+
+// 4. Realistic Die-Cut Twin-Scroll Turbocharger Sticker
+export const DieCutTurboSticker = ({ className = "w-20 h-20" }) => (
+  <div className={`relative group inline-block cursor-pointer select-none transition-transform duration-300 hover:scale-115 hover:rotate-6 hover:-translate-y-1 active:scale-95 ${className}`}>
+    <svg viewBox="0 0 140 140" className="w-full h-full filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]" xmlns="http://www.w3.org/2000/svg">
+      {/* White Die-Cut Vinyl Contour */}
+      <circle cx="70" cy="70" r="62" fill="#FFFFFF" stroke="#E4E4E7" strokeWidth="4" />
+      
+      {/* Turbo Snail Shell Housing */}
+      <path
+        d="M 70 20 C 100 20 120 45 120 75 C 120 105 95 120 65 120 C 35 120 20 95 20 70 C 20 40 45 20 70 20 Z"
+        fill="#27272A"
+        stroke="#71717A"
+        strokeWidth="3"
+      />
+      {/* Exhaust Pipe Inlet */}
+      <rect x="90" y="20" width="30" height="24" rx="3" fill="#3F3F46" stroke="#71717A" strokeWidth="2" />
+
+      {/* Center Compressor Wheel */}
+      <circle cx="68" cy="72" r="32" fill="#18181B" stroke="#E4E4E7" strokeWidth="2.5" />
+      
+      {/* Turbine Blades (Animated on hover) */}
+      <g transform="translate(68, 72)" className="group-hover:animate-spin-slow origin-center">
+        {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => (
+          <line
+            key={i}
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="-26"
+            stroke="#38BDF8"
+            strokeWidth="3"
+            strokeLinecap="round"
+            transform={`rotate(${angle})`}
+          />
+        ))}
+        <circle cx="0" cy="0" r="7" fill="#EF4444" stroke="#FFFFFF" strokeWidth="1.5" />
+      </g>
+    </svg>
+  </div>
+);
+
+// 5. Realistic Die-Cut Start Engine Ignition Button Sticker
+export const DieCutEngineStartSticker = ({ className = "w-20 h-20" }) => (
+  <div className={`relative group inline-block cursor-pointer select-none transition-transform duration-300 hover:scale-115 hover:-rotate-6 hover:-translate-y-1 active:scale-95 ${className}`}>
+    <svg viewBox="0 0 140 140" className="w-full h-full filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]" xmlns="http://www.w3.org/2000/svg">
+      {/* White Die-Cut Vinyl Outline */}
+      <circle cx="70" cy="70" r="62" fill="#FFFFFF" stroke="#E4E4E7" strokeWidth="4" />
+      
+      {/* Outer Brushed Aluminum Bezel */}
+      <circle cx="70" cy="70" r="54" fill="#18181B" stroke="#71717A" strokeWidth="4" />
+      
+      {/* Glowing Crimson Push Button */}
+      <circle cx="70" cy="70" r="44" fill="#DC2626" stroke="#991B1B" strokeWidth="2.5" />
+      <circle cx="70" cy="70" r="41" fill="none" stroke="#FCA5A5" strokeWidth="1" opacity="0.7" />
+
+      {/* Button Text */}
+      <text x="70" y="58" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontWeight="900" fontSize="11" letterSpacing="1">
+        START
+      </text>
+      <text x="70" y="74" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontWeight="900" fontSize="11" letterSpacing="1">
+        ENGINE
+      </text>
+      <text x="70" y="90" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontWeight="800" fontSize="9" opacity="0.85">
+        STOP
+      </text>
+
+      {/* Top Gloss Flare */}
+      <path d="M 40 45 Q 70 30 100 45 Q 70 55 40 45 Z" fill="#FFFFFF" opacity="0.35" />
+    </svg>
+  </div>
+);
+
+// 6. Realistic Die-Cut Checkered Racing Flag Sticker
+export const DieCutRacingFlagSticker = ({ className = "w-20 h-20" }) => (
+  <div className={`relative group inline-block cursor-pointer select-none transition-transform duration-300 hover:scale-115 hover:rotate-4 hover:-translate-y-1 active:scale-95 ${className}`}>
+    <svg viewBox="0 0 140 140" className="w-full h-full filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]" xmlns="http://www.w3.org/2000/svg">
+      {/* White Die-Cut Vinyl Outline */}
+      <path
+        d="M 20 20 L 115 15 Q 125 55 105 85 L 20 90 Z"
+        fill="#FFFFFF"
+        stroke="#E4E4E7"
+        strokeWidth="6"
+        strokeLinejoin="round"
+      />
+      {/* Flag Pole */}
+      <line x1="20" y1="12" x2="20" y2="128" stroke="#18181B" strokeWidth="6" strokeLinecap="round" />
+      <circle cx="20" cy="12" r="5" fill="#EAB308" />
+
+      {/* Checkered Grid Pattern */}
+      <g transform="translate(24, 20)">
+        <rect x="0" y="0" width="18" height="16" fill="#09090B" />
+        <rect x="18" y="0" width="18" height="16" fill="#FFFFFF" />
+        <rect x="36" y="0" width="18" height="16" fill="#09090B" />
+        <rect x="54" y="0" width="18" height="16" fill="#FFFFFF" />
+        <rect x="72" y="0" width="18" height="16" fill="#09090B" />
+
+        <rect x="0" y="16" width="18" height="16" fill="#FFFFFF" />
+        <rect x="18" y="16" width="18" height="16" fill="#09090B" />
+        <rect x="36" y="16" width="18" height="16" fill="#FFFFFF" />
+        <rect x="54" y="16" width="18" height="16" fill="#09090B" />
+        <rect x="72" y="16" width="18" height="16" fill="#FFFFFF" />
+
+        <rect x="0" y="32" width="18" height="16" fill="#09090B" />
+        <rect x="18" y="32" width="18" height="16" fill="#FFFFFF" />
+        <rect x="36" y="32" width="18" height="16" fill="#09090B" />
+        <rect x="54" y="32" width="18" height="16" fill="#FFFFFF" />
+        <rect x="72" y="32" width="18" height="16" fill="#09090B" />
+
+        <rect x="0" y="48" width="18" height="16" fill="#FFFFFF" />
+        <rect x="18" y="48" width="18" height="16" fill="#09090B" />
+        <rect x="36" y="48" width="18" height="16" fill="#FFFFFF" />
+        <rect x="54" y="48" width="18" height="16" fill="#09090B" />
+        <rect x="72" y="48" width="18" height="16" fill="#E2001A" />
+      </g>
+    </svg>
+  </div>
+);
+
+// 7. Base Component Exports for Lock & Layouts
+export const BMWLogo = DieCutBMWLogo;
+export const BMWM3Car = DieCutBMWM4Car;
+export const BMWMBadge = DieCutMBadge;
+export const StartEngineButton = DieCutEngineStartSticker;
+export const TurboBoostGauge = DieCutTurboSticker;
+
 export const BMWMStripes = ({ className = "h-4 w-28" }) => (
-  <div className={`inline-flex transform -skew-x-12 overflow-hidden rounded-sm shadow-sm ${className}`}>
+  <div className={`inline-flex transform -skew-x-12 overflow-hidden rounded-sm shadow-md border border-white/60 ${className}`}>
     <div className="flex-1 bg-[#009FE3]" />
     <div className="flex-1 bg-[#0019A8]" />
     <div className="flex-1 bg-[#E2001A]" />
   </div>
-);
-
-// BMW M Power Badge
-export const BMWMBadge = ({ className = "w-20 h-10" }) => (
-  <svg viewBox="0 0 120 60" className={`select-none filter drop-shadow-sm ${className}`} xmlns="http://www.w3.org/2000/svg">
-    <g transform="skewX(-14)">
-      <rect x="18" y="14" width="8" height="32" fill="#009FE3" rx="1.5" />
-      <rect x="29" y="14" width="8" height="32" fill="#0019A8" rx="1.5" />
-      <rect x="40" y="14" width="8" height="32" fill="#E2001A" rx="1.5" />
-      <text x="54" y="44" fill="#18181B" fontFamily="sans-serif" fontWeight="900" fontSize="36" letterSpacing="-1">M</text>
-    </g>
-  </svg>
-);
-
-// Cute Chibi BMW M3 G80 Sports Car
-export const BMWM3Car = ({ className = "w-28 h-20" }) => (
-  <svg viewBox="0 0 200 120" className={`select-none filter drop-shadow-md ${className}`} xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="bmwPaint" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#38BDF8" />
-        <stop offset="100%" stopColor="#0284C7" />
-      </linearGradient>
-    </defs>
-    
-    {/* Car Roof & Cabin */}
-    <path d="M 50 55 Q 70 25 115 25 Q 150 25 165 55 Z" fill="#0F172A" stroke="#1E293B" strokeWidth="2" />
-    <path d="M 60 52 Q 78 30 115 30 Q 142 30 155 52 Z" fill="#93C5FD" opacity="0.8" />
-    
-    {/* Body Chassis */}
-    <path d="M 15 75 Q 20 52 48 52 L 165 52 Q 190 55 192 78 Q 192 90 178 92 L 30 92 Q 12 92 15 75 Z" fill="url(#bmwPaint)" stroke="#0369A1" strokeWidth="2.5" />
-    
-    {/* M Carbon Hood Lines */}
-    <path d="M 55 52 L 40 70 M 150 52 L 165 70" stroke="#0369A1" strokeWidth="1.5" />
-
-    {/* Aggressive Angel Eyes Headlights */}
-    <ellipse cx="28" cy="68" rx="7" ry="5" fill="#F8FAFC" stroke="#E2E8F0" strokeWidth="1" />
-    <path d="M 23 68 Q 28 62 33 68" stroke="#38BDF8" strokeWidth="2.5" fill="none" />
-    
-    <ellipse cx="178" cy="68" rx="7" ry="5" fill="#F8FAFC" stroke="#E2E8F0" strokeWidth="1" />
-    <path d="M 173 68 Q 178 62 183 68" stroke="#38BDF8" strokeWidth="2.5" fill="none" />
-
-    {/* Iconic Tall Kidney Grille in Center */}
-    <rect x="90" y="58" width="8" height="22" rx="3" fill="#0F172A" stroke="#1E293B" strokeWidth="1.5" />
-    <rect x="102" y="58" width="8" height="22" rx="3" fill="#0F172A" stroke="#1E293B" strokeWidth="1.5" />
-
-    {/* Wheels with M Alloy Rims */}
-    <g transform="translate(48, 90)">
-      <circle cx="0" cy="0" r="18" fill="#18181B" stroke="#52525B" strokeWidth="2.5" />
-      <circle cx="0" cy="0" r="11" fill="#71717A" stroke="#E4E4E7" strokeWidth="1.5" />
-      <circle cx="0" cy="0" r="4" fill="#0066B1" />
-    </g>
-
-    <g transform="translate(155, 90)">
-      <circle cx="0" cy="0" r="18" fill="#18181B" stroke="#52525B" strokeWidth="2.5" />
-      <circle cx="0" cy="0" r="11" fill="#71717A" stroke="#E4E4E7" strokeWidth="1.5" />
-      <circle cx="0" cy="0" r="4" fill="#0066B1" />
-    </g>
-
-    {/* M Power Stripe decal on side */}
-    <g transform="translate(75, 72) skewX(-15)">
-      <rect x="0" y="0" width="4" height="12" fill="#009FE3" />
-      <rect x="5" y="0" width="4" height="12" fill="#0019A8" />
-      <rect x="10" y="0" width="4" height="12" fill="#E2001A" />
-    </g>
-  </svg>
-);
-
-// BMW Push Start Engine Button
-export const StartEngineButton = ({ className = "w-14 h-14" }) => (
-  <svg viewBox="0 0 100 100" className={`select-none filter drop-shadow-md ${className}`} xmlns="http://www.w3.org/2000/svg">
-    <circle cx="50" cy="50" r="46" fill="#18181B" stroke="#71717A" strokeWidth="3" />
-    <circle cx="50" cy="50" r="38" fill="#DC2626" stroke="#991B1B" strokeWidth="2" />
-    <circle cx="50" cy="50" r="35" fill="none" stroke="#F87171" strokeWidth="1" opacity="0.6" />
-    <text x="50" y="42" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontWeight="900" fontSize="8" letterSpacing="0.5">START</text>
-    <text x="50" y="54" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontWeight="900" fontSize="8" letterSpacing="0.5">ENGINE</text>
-    <text x="50" y="66" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontWeight="800" fontSize="7" opacity="0.8">STOP</text>
-  </svg>
-);
-
-// Turbo Boost Gauge
-export const TurboBoostGauge = ({ className = "w-14 h-14" }) => (
-  <svg viewBox="0 0 100 100" className={`select-none filter drop-shadow-md ${className}`} xmlns="http://www.w3.org/2000/svg">
-    <circle cx="50" cy="50" r="46" fill="#09090B" stroke="#27272A" strokeWidth="3" />
-    <path d="M 22 75 A 35 35 0 1 1 78 75" fill="none" stroke="#3F3F46" strokeWidth="4" />
-    <path d="M 50 15 A 35 35 0 0 1 78 75" fill="none" stroke="#EF4444" strokeWidth="4" strokeLinecap="round" />
-    <line x1="50" y1="50" x2="72" y2="35" stroke="#F87171" strokeWidth="3" strokeLinecap="round" />
-    <circle cx="50" cy="50" r="5" fill="#EF4444" />
-    <text x="50" y="70" textAnchor="middle" fill="#A1A1AA" fontFamily="sans-serif" fontWeight="800" fontSize="8">BAR / PSI</text>
-  </svg>
 );
 
 // BMW M Sport Alloy Wheel Rim (for Vinyl player)
@@ -145,7 +277,7 @@ export const BMWMWheelRim = ({ className = "w-40 h-40", isSpinning = false }) =>
       <path d="M 140 60 A 70 70 0 0 1 165 110 L 150 105 A 55 55 0 0 0 130 68 Z" fill="#0066B1" stroke="#004A80" strokeWidth="1.5" />
       <text x="145" y="90" fill="#FFFFFF" fontWeight="900" fontSize="7" transform="rotate(45 145 90)">///M</text>
 
-      {/* M Competition Double-Spoke Alloy Rim (Gunmetal & Silver Diamond Cut) */}
+      {/* M Competition Double-Spoke Alloy Rim */}
       <circle cx="100" cy="100" r="68" fill="#27272A" stroke="#71717A" strokeWidth="2" />
       
       {/* 5 Double Spokes */}

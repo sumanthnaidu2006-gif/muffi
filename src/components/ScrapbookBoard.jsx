@@ -8,13 +8,17 @@ import { MemoryMap } from './widgets/MemoryMap';
 import { VinylRecord } from './widgets/VinylRecord';
 import { LoveLetterCard } from './widgets/LoveLetterCard';
 import { VideoFrame } from './widgets/VideoFrame';
-import { BMWMCockpit } from './widgets/BMWMCockpit';
 import {
+  DieCutBMWLogo,
+  DieCutBMWM4Car,
+  DieCutMBadge,
+  DieCutTurboSticker,
+  DieCutEngineStartSticker,
+  DieCutRacingFlagSticker,
   BMWLogo,
   BMWMStripes,
   BMWM3Car,
   StartEngineButton,
-  TurboBoostGauge,
 } from './BMWComponents';
 import {
   ChibiNaruto,
@@ -198,49 +202,69 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
             <MemoryMap theme={theme} />
           </div>
         </div>
-
-        {/* BMW M Cockpit Instrument Cluster (Speedometer, Rev Tachometer & Launch Control) */}
-        {theme === 'bmw' && (
-          <div className="mt-8">
-            <BMWMCockpit />
-          </div>
-        )}
       </main>
 
-      {/* Floating Animated Stickers Bar at Bottom (Exact words preserved) */}
-      <section className="max-w-4xl mx-auto mt-14 px-4">
-        <div className="bg-white/80 border-2 border-dashed border-zinc-300 rounded-3xl p-6 shadow-scrapbook relative">
-          <div className="text-center mb-4">
-            <span className="font-handwriting text-3xl font-bold text-zinc-900">
+      {/* Real Die-Cut Animated Stickers Bar at Bottom (Exact words preserved) */}
+      <section className="max-w-5xl mx-auto mt-14 px-4">
+        <div className="bg-white/85 border-2 border-dashed border-zinc-300 rounded-3xl p-6 sm:p-8 shadow-scrapbook relative">
+          <div className="text-center mb-6">
+            <span className="font-handwriting text-3xl sm:text-4xl font-bold text-zinc-900">
               stickers anni animate chesa neee 💃🕺
             </span>
-            <p className="font-cute text-sm text-amber-700">
-              They move 🍃
+            <p className="font-cute text-sm sm:text-base text-amber-700 font-bold mt-1">
+              They move 🍃 • Hover or tap the stickers to feel the sporty physics!
             </p>
           </div>
 
           {/* Dynamic Sticker Squad based on theme */}
           {theme === 'bmw' ? (
             <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
-              <div className="flex flex-col items-center hover:scale-125 transition-transform duration-200 cursor-pointer">
-                <BMWM3Car className="w-20 h-14" />
-                <span className="font-cute text-xs text-zinc-900 font-bold mt-1">BMW M3 G80</span>
+              {/* BMW M4 GT3 Racecar */}
+              <div className="flex flex-col items-center group">
+                <DieCutBMWM4Car className="w-28 sm:w-36 h-20" />
+                <span className="font-cute text-xs text-zinc-900 font-bold mt-2 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200 shadow-sm">
+                  M4 GT3 Racecar 🏎️
+                </span>
               </div>
-              <div className="flex flex-col items-center hover:scale-125 transition-transform duration-200 cursor-pointer">
-                <BMWLogo className="w-14 h-14 animate-spin-slow" />
-                <span className="font-cute text-xs text-zinc-900 font-bold mt-1">BMW Roundel</span>
+
+              {/* 3D Chrome BMW Roundel */}
+              <div className="flex flex-col items-center group">
+                <DieCutBMWLogo className="w-18 sm:w-22 h-18 sm:h-22" />
+                <span className="font-cute text-xs text-zinc-900 font-bold mt-2 bg-zinc-100 px-2.5 py-0.5 rounded-full border border-zinc-300 shadow-sm">
+                  BMW Emblem 🇩🇪
+                </span>
               </div>
-              <div className="flex flex-col items-center hover:scale-125 transition-transform duration-200 cursor-pointer">
-                <StartEngineButton className="w-14 h-14 animate-pulse" />
-                <span className="font-cute text-xs text-zinc-900 font-bold mt-1">Start Engine</span>
+
+              {/* M Power Carbon Badge */}
+              <div className="flex flex-col items-center group">
+                <DieCutMBadge className="w-28 sm:w-32 h-16" />
+                <span className="font-cute text-xs text-zinc-900 font-bold mt-2 bg-red-50 px-2.5 py-0.5 rounded-full border border-red-200 shadow-sm">
+                  ///M Power
+                </span>
               </div>
-              <div className="flex flex-col items-center hover:scale-125 transition-transform duration-200 cursor-pointer">
-                <TurboBoostGauge className="w-14 h-14 animate-wiggle" />
-                <span className="font-cute text-xs text-zinc-900 font-bold mt-1">Twin-Turbo</span>
+
+              {/* Start Engine Stop Button */}
+              <div className="flex flex-col items-center group">
+                <DieCutEngineStartSticker className="w-18 sm:w-22 h-18 sm:h-22" />
+                <span className="font-cute text-xs text-zinc-900 font-bold mt-2 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200 shadow-sm">
+                  Start Engine 🔴
+                </span>
               </div>
-              <div className="flex flex-col items-center hover:scale-125 transition-transform duration-200 cursor-pointer">
-                <BMWMStripes className="h-6 w-20" />
-                <span className="font-cute text-xs text-zinc-900 font-bold mt-1">M Power</span>
+
+              {/* Twin-Scroll Turbocharger */}
+              <div className="flex flex-col items-center group">
+                <DieCutTurboSticker className="w-18 sm:w-22 h-18 sm:h-22" />
+                <span className="font-cute text-xs text-zinc-900 font-bold mt-2 bg-sky-50 px-2.5 py-0.5 rounded-full border border-sky-200 shadow-sm">
+                  Twin-Turbo 💨
+                </span>
+              </div>
+
+              {/* Checkered Racing Flag */}
+              <div className="flex flex-col items-center group">
+                <DieCutRacingFlagSticker className="w-18 sm:w-22 h-18 sm:h-22" />
+                <span className="font-cute text-xs text-zinc-900 font-bold mt-2 bg-zinc-100 px-2.5 py-0.5 rounded-full border border-zinc-300 shadow-sm">
+                  Track Finish 🏁
+                </span>
               </div>
             </div>
           ) : (
