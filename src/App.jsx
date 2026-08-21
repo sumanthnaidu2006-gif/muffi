@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { LockScreen } from './components/LockScreen';
 import { FlowerBloomTransition } from './components/FlowerBloomTransition';
 import { ScrapbookBoard } from './components/ScrapbookBoard';
+import { logVisitorEvent } from './utils/visitorLogger';
 
 function App() {
   const [isUnlocked, setIsUnlocked] = useState(false);
@@ -12,12 +13,18 @@ function App() {
     return localStorage.getItem('app_theme') || 'bmw';
   });
 
+  // Log page view when someone loads the website
+  useEffect(() => {
+    logVisitorEvent('PAGE_VIEW', { theme });
+  }, []);
+
   const handleThemeChange = (newTheme) => {
     setTheme(newTheme);
     localStorage.setItem('app_theme', newTheme);
   };
 
   const handleUnlock = () => {
+    logVisitorEvent('UNLOCKED', { theme });
     setIsBlooming(true);
     setIsUnlocked(true); // Mount ScrapbookBoard in background for seamless reveal
   };
