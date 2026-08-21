@@ -87,3 +87,21 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #c3ae8a;
 }
+
+@keyframes windStreak {
+  0% {
+    stroke-dashoffset: 600;
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  100% {
+    stroke-dashoffset: -600;
+    opacity: 0;
+  }
+}
+
+.animate-wind-streak {
+  animation: windStreak 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
