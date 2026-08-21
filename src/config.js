@@ -81,4 +81,10 @@ export const CONFIG = {
     title: "this started everything",
     youtubeId: "ziABaAUq5Ck",
   },
+
+  // Discord Notifications
+  discord: {
+    username: "notzoro_x",
+    webhookUrl: "", // Paste your Discord Webhook URL here to get pinged on Discord!
+  },
 };
