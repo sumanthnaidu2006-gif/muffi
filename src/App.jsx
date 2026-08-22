@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { PrankScreen } from './components/PrankScreen';
 import { LockScreen } from './components/LockScreen';
 import { FlowerBloomTransition } from './components/FlowerBloomTransition';
 import { ScrapbookBoard } from './components/ScrapbookBoard';
 import { logVisitorEvent } from './utils/visitorLogger';
 
 function App() {
+  const [isPrankPassed, setIsPrankPassed] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [isBlooming, setIsBlooming] = useState(false);
   
@@ -21,6 +23,10 @@ function App() {
   const handleThemeChange = (newTheme) => {
     setTheme(newTheme);
     localStorage.setItem('app_theme', newTheme);
+  };
+
+  const handlePrankBypass = () => {
+    setIsPrankPassed(true);
   };
 
   const handleUnlock = () => {
@@ -40,7 +46,16 @@ function App() {
 
   return (
     <div className="min-h-screen w-full font-sans">
-      {!isUnlocked && (
+      {/* 1. Starting Prank Screen */}
+      {!isPrankPassed && (
+        <PrankScreen
+          onBypass={handlePrankBypass}
+          theme={theme}
+        />
+      )}
+
+      {/* 2. Real Lock Screen (Shows after Prank is bypassed by Siddhu) */}
+      {isPrankPassed && !isUnlocked && (
         <LockScreen
           onUnlock={handleUnlock}
           theme={theme}
@@ -48,6 +63,7 @@ function App() {
         />
       )}
 
+      {/* 3. Transition Animation */}
       {isBlooming && (
         <FlowerBloomTransition
           onAnimationComplete={handleBloomComplete}
@@ -55,6 +71,7 @@ function App() {
         />
       )}
 
+      {/* 4. Main Scrapbook Board */}
       {isUnlocked && (
         <ScrapbookBoard
           onRelock={handleRelock}
