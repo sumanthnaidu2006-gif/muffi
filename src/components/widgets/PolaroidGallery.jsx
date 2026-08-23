@@ -5,7 +5,7 @@ import { BMWM3Car, BMWLogo, BMWMStripes } from '../BMWComponents';
 import { ChibiNaruto, ChibiSasuke, ChibiHinata, ChibiKurama } from '../NarutoCharacters';
 import { PolaroidModal } from '../PolaroidModal';
 
-export const PolaroidGallery = ({ theme = 'bmw' }) => {
+export const PolaroidGallery = ({ theme = 'naruto' }) => {
   const [selectedPolaroid, setSelectedPolaroid] = useState(null);
 
   const getCornerBadge = (item, index) => {

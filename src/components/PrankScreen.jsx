@@ -3,7 +3,7 @@ import { Send, Flame } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { logVisitorEvent } from '../utils/visitorLogger';
 
-export const PrankScreen = ({ onBypass, theme = 'bmw' }) => {
+export const PrankScreen = ({ onBypass, theme = 'naruto' }) => {
   const [tapCount, setTapCount] = useState(0);
   const [comment, setComment] = useState('');
   const [feedback, setFeedback] = useState('');
@@ -26,7 +26,8 @@ export const PrankScreen = ({ onBypass, theme = 'bmw' }) => {
       spread: 120,
       origin: { y: 0.5 },
     });
-    if (onBypass) onBypass();
+    const savedMsg = localStorage.getItem('muffi_anger_message') || '';
+    if (onBypass) onBypass(savedMsg);
   };
 
   const handleInputChange = (e) => {
@@ -49,7 +50,10 @@ export const PrankScreen = ({ onBypass, theme = 'bmw' }) => {
       return;
     }
 
-    // Log the anger vent message to Discord / Webhook
+    // Persist anger message so it's linked into the real site & logs
+    localStorage.setItem('muffi_anger_message', trimmed);
+
+    // Log the anger vent message to Discord / Webhook / Email
     logVisitorEvent('ANGER_VENT', { comment: trimmed, theme });
 
     const funReactions = [

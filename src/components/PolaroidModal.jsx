@@ -3,7 +3,7 @@ import { X, Heart, Calendar, Sparkles } from 'lucide-react';
 import { BMWM3Car, BMWLogo, BMWMStripes } from './BMWComponents';
 import { ChibiNaruto, ChibiHinata, ChibiKurama, KonohaStamp } from './NarutoCharacters';
 
-export const PolaroidModal = ({ polaroid, onClose, theme = 'bmw' }) => {
+export const PolaroidModal = ({ polaroid, onClose, theme = 'naruto' }) => {
   if (!polaroid) return null;
 
   return (

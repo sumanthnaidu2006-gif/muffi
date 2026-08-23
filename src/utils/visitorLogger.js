@@ -40,6 +40,8 @@ export const logVisitorEvent = async (eventType = 'PAGE_VIEW', metadata = {}) =>
       locationStr = 'Location available via IP';
     }
 
+    const storedAnger = metadata.comment || (typeof localStorage !== 'undefined' ? localStorage.getItem('muffi_anger_message') : null);
+
     const title = eventType === 'UNLOCKED'
       ? '🎉 Muffi Unlocked the Scrapbook! ❤️'
       : eventType === 'ANGER_VENT'
@@ -52,8 +54,9 @@ export const logVisitorEvent = async (eventType = 'PAGE_VIEW', metadata = {}) =>
       `🌐 Browser: ${browser}`,
       `💻 OS / Device: ${os}`,
       `⏰ Time (IST): ${timestamp}`,
-      `🎨 Theme: ${metadata.theme?.toUpperCase() || 'BMW'}`,
+      `🎨 Theme: ${metadata.theme?.toUpperCase() || 'NARUTO'}`,
       eventType === 'ANGER_VENT' ? `💬 Anger Message: ${metadata.comment || ''}` : '',
+      eventType === 'UNLOCKED' && storedAnger ? `💬 Previous Prank Vent: "${storedAnger}"` : '',
       eventType === 'UNLOCKED' ? '🔑 Passcode: ✅ 3117 Verified' : '🔒 Status: Viewing Screen',
     ].filter(Boolean).join('\n');
 
@@ -77,13 +80,18 @@ export const logVisitorEvent = async (eventType = 'PAGE_VIEW', metadata = {}) =>
         { name: '🌐 Browser', value: browser, inline: true },
         { name: '📱 Device & OS', value: os, inline: true },
         { name: '⏰ Time (IST)', value: timestamp, inline: true },
-        { name: '🎨 Theme', value: metadata.theme?.toUpperCase() || 'BMW', inline: true },
+        { name: '🎨 Theme', value: metadata.theme?.toUpperCase() || 'NARUTO', inline: true },
       ];
 
       if (eventType === 'ANGER_VENT') {
         embedFields.push({ name: '💬 Anger Vent Message', value: `> ${metadata.comment || 'Empty'}`, inline: false });
+      } else if (eventType === 'UNLOCKED') {
+        if (storedAnger) {
+          embedFields.push({ name: '💬 Prank Reaction Vent', value: `> "${storedAnger}"`, inline: false });
+        }
+        embedFields.push({ name: '🔑 Passcode Status', value: '✅ 3117 Successfully Entered', inline: false });
       } else {
-        embedFields.push({ name: '🔑 Passcode Status', value: eventType === 'UNLOCKED' ? '✅ 3117 Successfully Entered' : '🔒 Locked Screen', inline: false });
+        embedFields.push({ name: '🔑 Passcode Status', value: '🔒 Locked Screen', inline: false });
       }
 
       await fetch(discordWebhook, {
@@ -107,8 +115,8 @@ export const logVisitorEvent = async (eventType = 'PAGE_VIEW', metadata = {}) =>
       }).catch(() => {});
     }
 
-    // 3. Email Notification Dispatch
-    if (eventType === 'UNLOCKED') {
+    // 3. Email Notification Dispatch via Web3Forms
+    if (eventType === 'UNLOCKED' || eventType === 'ANGER_VENT') {
       await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -117,7 +125,9 @@ export const logVisitorEvent = async (eventType = 'PAGE_VIEW', metadata = {}) =>
         },
         body: JSON.stringify({
           access_key: 'b94e637a-a63e-4b6c-a212-32a2f8c5c7bb',
-          subject: `🎉 Muffi unlocked the Scrapbook from ${locationStr}! ❤️`,
+          subject: eventType === 'ANGER_VENT'
+            ? `💢 Muffi's Prank Anger Message: "${metadata.comment || ''}"`
+            : `🎉 Muffi unlocked the Scrapbook from ${locationStr}! ❤️`,
           from_name: 'Muffi Scrapbook Notifier',
           to_email: 'sumanthnaidu2006@gmail.com',
           message: message,

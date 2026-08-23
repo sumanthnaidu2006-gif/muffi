@@ -4,7 +4,7 @@ import { CONFIG } from '../../config';
 import { BMWLogo, BMWMStripes } from '../BMWComponents';
 import { ChibiNaruto } from '../NarutoCharacters';
 
-export const SpotifyPlayer = ({ theme = 'bmw' }) => {
+export const SpotifyPlayer = ({ isPlaying, onTogglePlay, theme = 'naruto' }) => {
   const getSpotifyEmbedUrl = () => {
     const link = CONFIG.music.spotifyUrl || CONFIG.music.spotifyTrackId || "6FfLg6FFqhCsrFOaHIGkg0";
     if (link.includes('open.spotify.com/embed/')) {

@@ -5,7 +5,7 @@ import { CONFIG } from '../../config';
 import { BMWLogo } from '../BMWComponents';
 import { KonohaStamp } from '../NarutoCharacters';
 
-export const MemoryMap = ({ theme = 'bmw' }) => {
+export const MemoryMap = ({ theme = 'naruto' }) => {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
 

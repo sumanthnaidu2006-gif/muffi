@@ -4,7 +4,7 @@ import { CONFIG } from '../../config';
 import { BMWLogo, BMWMStripes } from '../BMWComponents';
 import { ChibiKakashi } from '../NarutoCharacters';
 
-export const LoveLetterCard = ({ theme = 'bmw' }) => {
+export const LoveLetterCard = ({ theme = 'naruto' }) => {
   return (
     <div className="relative group">
       {/* Corner badge based on theme */}

@@ -3,7 +3,7 @@ import { HelpCircle, Sparkles, Volume2, Music } from 'lucide-react';
 import { BMWMWheelRim, BMWMStripes } from '../BMWComponents';
 import { ChibiKurama } from '../NarutoCharacters';
 
-export const VinylRecord = ({ isPlaying, onTogglePlay, theme = 'bmw' }) => {
+export const VinylRecord = ({ isPlaying, onTogglePlay, theme = 'naruto' }) => {
   const audioRef = useRef(null);
 
   useEffect(() => {

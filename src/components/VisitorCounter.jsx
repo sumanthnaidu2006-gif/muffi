@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Eye, Sparkles } from 'lucide-react';
 
-export const VisitorCounter = ({ theme = 'bmw' }) => {
+export const VisitorCounter = ({ theme = 'naruto' }) => {
   const [visits, setVisits] = useState(null);
 
   useEffect(() => {

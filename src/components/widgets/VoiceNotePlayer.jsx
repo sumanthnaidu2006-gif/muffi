@@ -4,7 +4,7 @@ import { CONFIG } from '../../config';
 import { BMWM3Car } from '../BMWComponents';
 import { ChibiHinata, RamenSticker } from '../NarutoCharacters';
 
-export const VoiceNotePlayer = ({ theme = 'bmw' }) => {
+export const VoiceNotePlayer = ({ theme = 'naruto' }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);

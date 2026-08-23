@@ -29,8 +29,9 @@ import { AudioController } from './AudioController';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import { VisitorCounter } from './VisitorCounter';
 
-export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
+export const ScrapbookBoard = ({ onRelock, theme = 'naruto', onToggleTheme, angerMessage = '' }) => {
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
+  const displayedAnger = angerMessage || (typeof localStorage !== 'undefined' ? localStorage.getItem('muffi_anger_message') : '');
 
   const toggleMusic = () => {
     setIsPlayingMusic(!isPlayingMusic);
@@ -204,6 +205,43 @@ export const ScrapbookBoard = ({ onRelock, theme = 'bmw', onToggleTheme }) => {
           
           {/* Left Column (5 cols on lg screens) */}
           <div className="lg:col-span-5 flex flex-col gap-8">
+            {/* Prank Screen Vent Memo Note (If user vented on prank screen) */}
+            {displayedAnger && (
+              <div
+                className={`border-2 rounded-3xl p-5 shadow-2xl relative transition-all ${
+                  isBMW
+                    ? 'bg-[#0d1422]/95 backdrop-blur-xl border-rose-500/30 text-white shadow-[0_8px_32px_rgba(244,63,94,0.15)]'
+                    : 'bg-[#fffbeb] border-amber-300 text-amber-950 shadow-scrapbook'
+                }`}
+              >
+                {/* Washi tape on top */}
+                <div
+                  className={`absolute -top-3 left-6 w-24 h-5 rotate-2 opacity-90 rounded-sm ${
+                    isBMW ? 'bg-gradient-to-r from-rose-500 to-amber-500' : 'washi-tape-pink'
+                  }`}
+                />
+
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-lg">💢</span>
+                  <h3 className={`font-mono text-xs uppercase tracking-wider font-bold ${isBMW ? 'text-rose-400' : 'text-rose-700'}`}>
+                    Prank Page Vent Log 📝
+                  </h3>
+                </div>
+
+                <div className={`p-3 rounded-2xl border ${
+                  isBMW ? 'bg-black/40 border-white/5' : 'bg-white/80 border-amber-200/80'
+                }`}>
+                  <p className="font-handwriting text-xl sm:text-2xl text-rose-400 leading-snug">
+                    "{displayedAnger}"
+                  </p>
+                </div>
+
+                <p className={`font-cute text-xs mt-2 text-right italic ${isBMW ? 'text-zinc-400' : 'text-amber-800/80'}`}>
+                  — Kopam tagginda ippudu? 🥺👉👈 (Prank feedback saved)
+                </p>
+              </div>
+            )}
+
             {/* Spotify / Favorite Person Player */}
             <SpotifyPlayer
               isPlaying={isPlayingMusic}

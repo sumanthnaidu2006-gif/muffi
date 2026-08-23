@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import confetti from 'canvas-confetti';
 import { CONFIG } from '../config';
 
-export const FlowerBloomTransition = ({ onAnimationComplete, theme = 'bmw' }) => {
+export const FlowerBloomTransition = ({ onAnimationComplete, theme = 'naruto' }) => {
   // Stages: 'entering' -> 'hovering' -> 'gust_away'
   const [stage, setStage] = useState('entering');
   const isBMW = theme === 'bmw';

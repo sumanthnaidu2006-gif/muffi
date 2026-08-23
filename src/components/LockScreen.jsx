@@ -6,7 +6,7 @@ import { ChibiNaruto, ChibiKurama, KonohaStamp } from './NarutoCharacters';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import { VisitorCounter } from './VisitorCounter';
 
-export const LockScreen = ({ onUnlock, theme = 'bmw', onToggleTheme }) => {
+export const LockScreen = ({ onUnlock, theme = 'naruto', onToggleTheme }) => {
   const [pin, setPin] = useState('');
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);

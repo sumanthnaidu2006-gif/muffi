@@ -10,9 +10,13 @@ function App() {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [isBlooming, setIsBlooming] = useState(false);
   
-  // Theme state: 'bmw' or 'naruto' (persisted in localStorage)
+  // Theme state: 'naruto' or 'bmw' (persisted in localStorage, default is naruto)
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('app_theme') || 'bmw';
+    return localStorage.getItem('app_theme') || 'naruto';
+  });
+
+  const [angerMessage, setAngerMessage] = useState(() => {
+    return localStorage.getItem('muffi_anger_message') || '';
   });
 
   // Log page view when someone loads the website
@@ -25,12 +29,13 @@ function App() {
     localStorage.setItem('app_theme', newTheme);
   };
 
-  const handlePrankBypass = () => {
+  const handlePrankBypass = (msg) => {
+    if (msg) setAngerMessage(msg);
     setIsPrankPassed(true);
   };
 
   const handleUnlock = () => {
-    logVisitorEvent('UNLOCKED', { theme });
+    logVisitorEvent('UNLOCKED', { theme, comment: angerMessage });
     setIsBlooming(true);
     setIsUnlocked(true); // Mount ScrapbookBoard in background for seamless reveal
   };
@@ -77,6 +82,7 @@ function App() {
           onRelock={handleRelock}
           theme={theme}
           onToggleTheme={handleThemeChange}
+          angerMessage={angerMessage}
         />
       )}
     </div>
