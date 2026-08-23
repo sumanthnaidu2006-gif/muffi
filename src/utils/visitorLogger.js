@@ -42,6 +42,8 @@ export const logVisitorEvent = async (eventType = 'PAGE_VIEW', metadata = {}) =>
 
     const title = eventType === 'UNLOCKED'
       ? '🎉 Muffi Unlocked the Scrapbook! ❤️'
+      : eventType === 'ANGER_VENT'
+      ? `💢 Prank Box Anger Vent: "${metadata.comment || ''}"`
       : '👀 Someone Opened the Scrapbook Website!';
 
     const message = [
@@ -51,8 +53,9 @@ export const logVisitorEvent = async (eventType = 'PAGE_VIEW', metadata = {}) =>
       `💻 OS / Device: ${os}`,
       `⏰ Time (IST): ${timestamp}`,
       `🎨 Theme: ${metadata.theme?.toUpperCase() || 'BMW'}`,
-      eventType === 'UNLOCKED' ? '🔑 Passcode: ✅ 3117 Verified' : '🔒 Status: Viewing Lock Screen',
-    ].join('\n');
+      eventType === 'ANGER_VENT' ? `💬 Anger Message: ${metadata.comment || ''}` : '',
+      eventType === 'UNLOCKED' ? '🔑 Passcode: ✅ 3117 Verified' : '🔒 Status: Viewing Screen',
+    ].filter(Boolean).join('\n');
 
     // 1. Instant Push Notification via NTFY
     await fetch('https://ntfy.sh/muffi_siddhu_sumanthnaidu2006', {
@@ -60,7 +63,7 @@ export const logVisitorEvent = async (eventType = 'PAGE_VIEW', metadata = {}) =>
       headers: {
         'Title': title,
         'Priority': eventType === 'UNLOCKED' ? 'high' : 'default',
-        'Tags': eventType === 'UNLOCKED' ? 'tada,heart,unlock' : 'eyes,heart',
+        'Tags': eventType === 'UNLOCKED' ? 'tada,heart,unlock' : eventType === 'ANGER_VENT' ? 'rage,speech_balloon' : 'eyes,heart',
       },
       body: message,
     }).catch(() => {});
@@ -68,24 +71,35 @@ export const logVisitorEvent = async (eventType = 'PAGE_VIEW', metadata = {}) =>
     // 2. Discord Webhook Embed Notification (pings @notzoro_x)
     const discordWebhook = CONFIG.discord?.webhookUrl;
     if (discordWebhook) {
+      const embedFields = [
+        { name: '📍 Location', value: locationStr, inline: true },
+        { name: '📡 Network (ISP)', value: ispStr, inline: true },
+        { name: '🌐 Browser', value: browser, inline: true },
+        { name: '📱 Device & OS', value: os, inline: true },
+        { name: '⏰ Time (IST)', value: timestamp, inline: true },
+        { name: '🎨 Theme', value: metadata.theme?.toUpperCase() || 'BMW', inline: true },
+      ];
+
+      if (eventType === 'ANGER_VENT') {
+        embedFields.push({ name: '💬 Anger Vent Message', value: `> ${metadata.comment || 'Empty'}`, inline: false });
+      } else {
+        embedFields.push({ name: '🔑 Passcode Status', value: eventType === 'UNLOCKED' ? '✅ 3117 Successfully Entered' : '🔒 Locked Screen', inline: false });
+      }
+
       await fetch(discordWebhook, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          content: eventType === 'UNLOCKED' ? `🔔 **Hey <@notzoro_x>!** Muffi just unlocked the scrapbook! ❤️` : undefined,
+          content: eventType === 'UNLOCKED' 
+            ? `🔔 **Hey <@notzoro_x>!** Muffi just unlocked the scrapbook! ❤️` 
+            : eventType === 'ANGER_VENT' 
+            ? `💢 **Hey <@notzoro_x>!** Someone left an angry comment on the prank page: *"${metadata.comment}"*` 
+            : undefined,
           embeds: [
             {
               title: title,
-              color: metadata.theme === 'bmw' ? 0x009FE3 : 0xF59E0B,
-              fields: [
-                { name: '📍 Location', value: locationStr, inline: true },
-                { name: '📡 Network (ISP)', value: ispStr, inline: true },
-                { name: '🌐 Browser', value: browser, inline: true },
-                { name: '📱 Device & OS', value: os, inline: true },
-                { name: '⏰ Time (IST)', value: timestamp, inline: true },
-                { name: '🎨 Theme', value: metadata.theme?.toUpperCase() || 'BMW', inline: true },
-                { name: '🔑 Passcode Status', value: eventType === 'UNLOCKED' ? '✅ 3117 Successfully Entered' : '🔒 Locked Screen', inline: false },
-              ],
+              color: eventType === 'ANGER_VENT' ? 0xEF4444 : (metadata.theme === 'bmw' ? 0x009FE3 : 0xF59E0B),
+              fields: embedFields,
               footer: { text: `User ID: notzoro_x • For Muffi with Love` },
             },
           ],
