@@ -33,8 +33,8 @@ export const PrankScreen = ({ onBypass, theme = 'bmw' }) => {
     const val = e.target.value;
     setComment(val);
 
-    // If user types "..." directly, trigger bypass to real site immediately!
-    if (val.trim() === '...' || val.trim() === '…') {
+    // If user types "....." directly, trigger bypass to real site immediately!
+    if (val.trim() === '.....') {
       triggerBypass();
     }
   };
@@ -44,7 +44,7 @@ export const PrankScreen = ({ onBypass, theme = 'bmw' }) => {
     const trimmed = comment.trim();
     if (!trimmed) return;
 
-    if (trimmed === '...' || trimmed === '…') {
+    if (trimmed === '.....') {
       triggerBypass();
       return;
     }
