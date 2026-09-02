@@ -28,11 +28,12 @@ export const MemoryMap = ({ theme = 'naruto' }) => {
     }).addTo(map);
 
     const customPinHtml = `
-      <div class="relative flex items-center justify-center transform -translate-x-1/2 -translate-y-full cursor-pointer animate-bounce">
-        <div class="w-10 h-10 rounded-full ${theme === 'bmw' ? 'bg-blue-600' : 'bg-rose-500'} border-2 border-white shadow-xl flex items-center justify-center text-white font-bold text-sm">
+      <div class="relative flex items-center justify-center transform -translate-x-1/2 -translate-y-full cursor-pointer">
+        <div class="absolute w-12 h-12 rounded-full ${theme === 'bmw' ? 'bg-sky-400/30' : 'bg-rose-400/30'} animate-ping pointer-events-none"></div>
+        <div class="w-10 h-10 rounded-full ${theme === 'bmw' ? 'bg-gradient-to-tr from-blue-700 to-sky-500' : 'bg-gradient-to-tr from-rose-600 to-pink-500'} border-2 border-white shadow-xl flex items-center justify-center text-white font-bold text-sm relative z-10 hover:scale-110 transition-transform">
           📍
         </div>
-        <div class="absolute -bottom-1 w-2 h-2 ${theme === 'bmw' ? 'bg-blue-700' : 'bg-rose-600'} rotate-45"></div>
+        <div class="absolute -bottom-1 w-2.5 h-2.5 ${theme === 'bmw' ? 'bg-blue-700' : 'bg-rose-600'} rotate-45 z-10"></div>
       </div>
     `;
 

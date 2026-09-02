@@ -47,7 +47,7 @@ export const SpotifyPlayer = ({ isPlaying, onTogglePlay, theme = 'naruto' }) => 
       )}
 
       {/* Main Pinned Note */}
-      <div className="relative bg-[#fffdfa] border-2 border-[#e6d8ba] rounded-2xl p-5 shadow-scrapbook transform -rotate-1 hover:rotate-0 transition-all duration-300">
+      <div className="relative bg-[#fffdfa] paper-texture border-2 border-[#e6d8ba] rounded-2xl p-5 shadow-scrapbook transform -rotate-1 hover:rotate-0 transition-all duration-300">
         
         {/* Note Header (Exact words preserved) */}
         <div className="text-center pb-3 border-b border-dashed border-[#e6d8ba]/80 mb-3 flex items-center justify-between">
@@ -61,7 +61,7 @@ export const SpotifyPlayer = ({ isPlaying, onTogglePlay, theme = 'naruto' }) => 
             href={getSpotifyDirectLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-stone-400 hover:text-emerald-600 transition-colors p-1"
+            className="text-stone-400 hover:text-emerald-600 transition-colors p-1.5 rounded-lg hover:bg-emerald-50"
             title="Open on Spotify"
           >
             <ExternalLink className="w-4 h-4" />

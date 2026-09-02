@@ -137,15 +137,15 @@ export const VoiceNotePlayer = ({ theme = 'naruto' }) => {
         </div>
 
         {/* Audio Waveform & Play Button Container */}
-        <div className="flex items-center gap-3 bg-[#f8f9fa] p-3 rounded-2xl border border-zinc-200">
+        <div className="flex items-center gap-3 bg-[#f8f9fa] p-3 rounded-2xl border border-zinc-200 shadow-inner">
           
           {/* Play/Pause Button */}
           <button
             onClick={togglePlay}
-            className={`w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 shadow-md transition-transform active:scale-90 text-white cursor-pointer ${
+            className={`w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 shadow-md transition-all duration-150 active:scale-90 text-white cursor-pointer ${
               theme === 'bmw'
-                ? 'bg-blue-600 hover:bg-blue-700'
-                : 'bg-emerald-600 hover:bg-emerald-700'
+                ? 'bg-gradient-to-tr from-blue-700 to-sky-500 hover:from-blue-600 hover:to-sky-400 shadow-blue-500/30'
+                : 'bg-gradient-to-tr from-emerald-700 to-emerald-500 hover:from-emerald-600 hover:to-emerald-400 shadow-emerald-500/30'
             }`}
             title={isPlaying ? 'Pause voice note' : 'Play voice note'}
           >
@@ -168,17 +168,17 @@ export const VoiceNotePlayer = ({ theme = 'naruto' }) => {
                   onClick={() => handleSeek(barProgressPercent)}
                 >
                   <span
-                    className={`w-full max-w-[4px] rounded-full transition-all duration-200 ${
+                    className={`w-full max-w-[4px] rounded-full transition-all duration-150 ${
                       isPlayed
                         ? theme === 'bmw'
                           ? index % 3 === 0 ? 'bg-[#009FE3]' : index % 3 === 1 ? 'bg-[#0019A8]' : 'bg-[#E2001A]'
                           : 'bg-emerald-600'
                         : isPlaying
-                        ? 'bg-blue-300'
+                        ? 'bg-emerald-200'
                         : 'bg-zinc-300'
                     }`}
                     style={{
-                      height: isPlaying ? `${Math.min(100, h * (isPlayed ? 1.1 : 0.8))}%` : `${h * 0.7}%`,
+                      height: isPlaying ? `${Math.min(100, Math.max(15, h * (isPlayed ? 1.05 : 0.75) + (index % 2 === 0 ? 8 : -8)))}%` : `${h * 0.7}%`,
                     }}
                   />
                 </div>
@@ -194,8 +194,8 @@ export const VoiceNotePlayer = ({ theme = 'naruto' }) => {
 
         {/* Transcript Box (Exact words preserved) */}
         {showTranscript && (
-          <div className="mt-3 p-3 bg-blue-50/90 rounded-xl border border-blue-200/80 font-cute text-sm text-zinc-900 animate-fadeIn">
-            <p className="italic">"{CONFIG.voiceNote.transcript}"</p>
+          <div className="mt-3 p-3.5 bg-amber-50/90 rounded-2xl border border-amber-200/80 font-cute text-sm text-zinc-900 animate-slide-up shadow-sm">
+            <p className="italic leading-relaxed">"{CONFIG.voiceNote.transcript}"</p>
           </div>
         )}
       </div>

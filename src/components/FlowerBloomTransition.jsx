@@ -305,9 +305,9 @@ export const FlowerBloomTransition = ({ onAnimationComplete, theme = 'naruto' })
               className="absolute inset-0 flex items-center justify-center pointer-events-none transition-all duration-700"
               style={{
                 transform: stage === 'entering'
-                  ? 'translate3d(0, 40px, 0) scale(0.6)'
+                  ? 'translate3d(0, 40px, 0) scale(0.7)'
                   : stage === 'gust_away'
-                  ? 'translate3d(100vw, -60vh, 0) scale(0.3) rotate(25deg)'
+                  ? 'translate3d(100vw, -60vh, 0) scale(0.3) rotate(20deg)'
                   : 'translate3d(0, 0, 0) scale(1) rotate(0deg)',
                 opacity: stage === 'gust_away' ? 0 : 1,
                 transitionTimingFunction: stage === 'gust_away'
@@ -317,15 +317,15 @@ export const FlowerBloomTransition = ({ onAnimationComplete, theme = 'naruto' })
             >
               <div className="relative text-center px-4 max-w-4xl transform">
                 <div className="mb-2">
-                  <span className="font-cute text-xl sm:text-3xl font-bold uppercase tracking-widest text-amber-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                  <span className="font-cute text-xl sm:text-3xl font-extrabold uppercase tracking-widest text-amber-900 bg-amber-100/90 px-6 py-1.5 rounded-full shadow-sm border border-amber-300 inline-block">
                     🌸 For {CONFIG.recipientName} 🌸
                   </span>
                 </div>
-                <h1 className="font-handwriting text-6xl sm:text-8xl md:text-9xl font-extrabold text-white tracking-wide drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] leading-none my-2">
+                <h1 className="font-handwriting text-6xl sm:text-8xl md:text-9xl font-extrabold text-amber-950 tracking-wide drop-shadow-[0_4px_25px_rgba(245,158,11,0.5)] leading-none my-3">
                   A small Gift 🙂
                 </h1>
                 <div className="mt-4">
-                  <span className="font-cute text-lg sm:text-2xl font-bold px-8 py-2.5 rounded-full backdrop-blur-md shadow-2xl border text-amber-100 bg-black/60 border-white/30">
+                  <span className="font-cute text-lg sm:text-2xl font-bold px-8 py-2.5 rounded-full backdrop-blur-md shadow-lg border text-amber-900 bg-white/90 border-amber-300">
                     From: {CONFIG.senderName} ✨
                   </span>
                 </div>

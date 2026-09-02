@@ -4,20 +4,33 @@ import { BMWM3Car, BMWLogo, BMWMStripes } from './BMWComponents';
 import { ChibiNaruto, ChibiHinata, ChibiKurama, KonohaStamp } from './NarutoCharacters';
 
 export const PolaroidModal = ({ polaroid, onClose, theme = 'naruto' }) => {
+  React.useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
   if (!polaroid) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
+    <div
+      role="dialog"
+      aria-modal="true"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-md animate-fade-in"
+    >
       {/* Backdrop click to close */}
-      <div className="absolute inset-0" onClick={onClose} />
+      <div className="absolute inset-0" onClick={onClose} aria-label="Close modal backdrop" />
 
       {/* Modal Content - Expanded Polaroid */}
-      <div className="relative z-10 bg-white rounded-3xl p-6 max-w-md w-full shadow-2xl border-4 border-zinc-200 transform animate-bloom-pop">
+      <div className="relative z-10 bg-white rounded-3xl p-6 max-w-md w-full shadow-2xl border-4 border-stone-200 transform animate-bloom-pop">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-zinc-900 text-white flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors active:scale-95 z-40"
+          aria-label="Close modal"
+          className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-zinc-900 text-white flex items-center justify-center shadow-lg hover:bg-rose-600 transition-colors active:scale-95 z-40 cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>

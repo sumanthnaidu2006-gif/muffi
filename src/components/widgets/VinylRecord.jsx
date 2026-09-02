@@ -51,7 +51,7 @@ export const VinylRecord = ({ isPlaying, onTogglePlay, theme = 'naruto' }) => {
             <BMWMWheelRim className="w-40 h-40 sm:w-48 sm:h-48" isSpinning={isPlaying} />
             {/* Center Mystery Badge Overlay */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-14 h-14 rounded-full bg-black/85 border border-zinc-500 shadow-xl flex flex-col items-center justify-center text-center">
+              <div className="w-14 h-14 rounded-full bg-black/90 border border-zinc-500/80 shadow-2xl flex flex-col items-center justify-center text-center">
                 <span className="font-extrabold text-[7px] text-zinc-300 uppercase tracking-wider leading-none">
                   TOP SECRET
                 </span>
@@ -88,12 +88,12 @@ export const VinylRecord = ({ isPlaying, onTogglePlay, theme = 'naruto' }) => {
             </div>
             {/* Tonearm */}
             <div
-              className={`absolute top-2 right-2 w-16 h-20 pointer-events-none transition-transform duration-500 origin-top-right ${
+              className={`absolute top-2 right-2 w-16 h-20 pointer-events-none transition-transform duration-700 origin-top-right ${
                 isPlaying ? 'rotate-12' : '-rotate-12'
               }`}
             >
-              <div className="w-1.5 h-14 bg-zinc-400 ml-auto mr-3 rounded-full shadow" />
-              <div className="w-3 h-4 bg-zinc-800 ml-auto mr-2 rounded-sm shadow" />
+              <div className="w-1.5 h-14 bg-zinc-300 ml-auto mr-3 rounded-full shadow-md" />
+              <div className="w-3.5 h-4 bg-zinc-800 ml-auto mr-2 rounded-sm shadow border border-zinc-600" />
             </div>
           </div>
         )}

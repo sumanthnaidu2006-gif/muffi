@@ -229,14 +229,14 @@ export const ScrapbookBoard = ({ onRelock, theme = 'naruto', onToggleTheme, ange
                 </div>
 
                 <div className={`p-3 rounded-2xl border ${
-                  isBMW ? 'bg-black/40 border-white/5' : 'bg-white/80 border-amber-200/80'
+                  isBMW ? 'bg-black/50 border-white/10' : 'bg-white/90 border-amber-200/90 shadow-inner'
                 }`}>
-                  <p className="font-handwriting text-xl sm:text-2xl text-rose-400 leading-snug">
+                  <p className={`font-handwriting text-xl sm:text-2xl leading-snug ${isBMW ? 'text-rose-400' : 'text-rose-700 font-bold'}`}>
                     "{displayedAnger}"
                   </p>
                 </div>
 
-                <p className={`font-cute text-xs mt-2 text-right italic ${isBMW ? 'text-zinc-400' : 'text-amber-800/80'}`}>
+                <p className={`font-cute text-xs mt-2 text-right italic ${isBMW ? 'text-zinc-400' : 'text-amber-900/80 font-medium'}`}>
                   — Kopam tagginda ippudu? 🥺👉👈 (Prank feedback saved)
                 </p>
               </div>
